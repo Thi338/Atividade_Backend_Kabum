@@ -13,6 +13,7 @@ import java.util.List;
 
 @Service
 public class FreteServiceImpl implements FreteService {
+    
     @Override
     public ResponseEntity<Object> calcularFrete(Produto produto) {
         List<Integer> listaVazia = new ArrayList<>();

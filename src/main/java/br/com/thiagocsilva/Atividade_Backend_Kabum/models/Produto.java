@@ -10,10 +10,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Produto {
 
-    private Long id;
+    private Integer id;
 
     private DimensaoDTO dimensao;
 
     private Double peso;
+
 
 }
