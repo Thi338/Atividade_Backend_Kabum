@@ -8,8 +8,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+
 import java.util.ArrayList;
 import java.util.List;
+
 
 @Service
 public class FreteServiceImpl implements FreteService {
@@ -23,8 +25,9 @@ public class FreteServiceImpl implements FreteService {
         if (produto.getPeso() > 0 && produto.getDimensao().altura() >= 10 && produto.getDimensao().altura() <= 140 &&
                 produto.getDimensao().largura() >= 6 && produto.getDimensao().largura() <= 140
         ) {
-            BigDecimal valor_freteNinja = BigDecimal.valueOf(produto.getPeso() * 0.3 / 10);
-            BigDecimal valor_freteKabum = BigDecimal.valueOf(produto.getPeso() * 0.2 / 10);
+
+            var valor_freteNinja = new BigDecimal(produto.getPeso() * 0.3 / 10).setScale(2);
+            var valor_freteKabum = new BigDecimal(produto.getPeso() * 0.2 / 10).setScale(2);
 
             FreteDTO freteDTO1 = new FreteDTO("Entrega Ninja", valor_freteNinja, 6);
             FreteDTO freteDTO2 = new FreteDTO("Entrega KaBuM", valor_freteKabum, 4);
@@ -37,7 +40,7 @@ public class FreteServiceImpl implements FreteService {
         if (produto.getPeso() > 0 && produto.getDimensao().altura() > 140 && produto.getDimensao().altura() <= 200
                 && produto.getDimensao().largura() >= 6 && produto.getDimensao().largura() <= 140) {
 
-            BigDecimal valor_frete = BigDecimal.valueOf(produto.getPeso() * 0.3 / 10);
+            var valor_frete = BigDecimal.valueOf(produto.getPeso() * 0.3 / 10);
             FreteDTO freteDTO = new FreteDTO("Entrega Ninja", valor_frete, 6);
             return ResponseEntity.status(HttpStatus.OK).body(freteDTO);
         }
@@ -47,7 +50,7 @@ public class FreteServiceImpl implements FreteService {
                 produto.getDimensao().largura() >= 13 && produto.getDimensao().largura() <= 125
         ) {
 
-            BigDecimal valor_frete = BigDecimal.valueOf(produto.getPeso() * 0.3 / 10);
+            var valor_frete = BigDecimal.valueOf(produto.getPeso() * 0.3 / 10);
             FreteDTO freteDTO = new FreteDTO("Entrega KaBuM", valor_frete, 4);
             return ResponseEntity.status(HttpStatus.OK).body(freteDTO);
         }
