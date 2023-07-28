@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,11 +19,11 @@ public class FreteServiceImpl implements FreteService {
         List<Object> listaDeOpcoes = new ArrayList<>();
 
         // Todos
-        if (produto.getPeso() > 0 && produto.getAltura() >= 10 && produto.getAltura() <= 140 &&
-                produto.getLargura() >= 6 && produto.getLargura() <= 140
+        if (produto.getPeso() > 0 && produto.getDimensao().altura() >= 10 && produto.getDimensao().altura() <= 140 &&
+                produto.getDimensao().largura() >= 6 && produto.getDimensao().largura() <= 140
         ) {
-            Double valor_freteNinja = produto.getPeso() * 0.3 / 10;
-            Double valor_freteKabum = produto.getPeso() * 0.2 / 10;
+            BigDecimal valor_freteNinja = BigDecimal.valueOf(produto.getPeso() * 0.3 / 10);
+            BigDecimal valor_freteKabum = BigDecimal.valueOf(produto.getPeso() * 0.2 / 10);
 
             FreteDTO freteDTO1 = new FreteDTO("Entrega Ninja", valor_freteNinja, 6);
             FreteDTO freteDTO2 = new FreteDTO("Entrega KaBuM", valor_freteKabum, 4);
@@ -32,20 +33,20 @@ public class FreteServiceImpl implements FreteService {
         }
 
         // Ninja
-        if (produto.getPeso() > 0 && produto.getAltura() > 140 && produto.getAltura() <= 200
-                && produto.getLargura() >= 6 && produto.getLargura() <= 140) {
+        if (produto.getPeso() > 0 && produto.getDimensao().altura() > 140 && produto.getDimensao().altura() <= 200
+                && produto.getDimensao().largura() >= 6 && produto.getDimensao().largura() <= 140) {
 
-            Double valor_frete = produto.getPeso() * 0.3 / 10;
+            BigDecimal valor_frete = BigDecimal.valueOf(produto.getPeso() * 0.3 / 10);
             FreteDTO freteDTO = new FreteDTO("Entrega Ninja", valor_frete, 6);
             return ResponseEntity.status(HttpStatus.OK).body(freteDTO);
         }
 
         // Kabum
-        if (produto.getPeso() > 0 && produto.getAltura() >= 5 && produto.getAltura() < 10 &&
-                produto.getLargura() >= 13 && produto.getLargura() <= 125
+        if (produto.getPeso() > 0 && produto.getDimensao().altura() >= 5 && produto.getDimensao().altura() < 10 &&
+                produto.getDimensao().largura() >= 13 && produto.getDimensao().largura() <= 125
         ) {
 
-            Double valor_frete = produto.getPeso() * 0.3 / 10;
+            BigDecimal valor_frete = BigDecimal.valueOf(produto.getPeso() * 0.3 / 10);
             FreteDTO freteDTO = new FreteDTO("Entrega KaBuM", valor_frete, 4);
             return ResponseEntity.status(HttpStatus.OK).body(freteDTO);
         }
