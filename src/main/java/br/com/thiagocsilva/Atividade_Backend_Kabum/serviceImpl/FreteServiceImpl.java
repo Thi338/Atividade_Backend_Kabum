@@ -25,9 +25,8 @@ public class FreteServiceImpl implements FreteService {
         if (produto.getPeso() > 0 && produto.getDimensao().altura() >= 10 && produto.getDimensao().altura() <= 140 &&
                 produto.getDimensao().largura() >= 6 && produto.getDimensao().largura() <= 140
         ) {
-
-            var valor_freteNinja = new BigDecimal(produto.getPeso() * 0.3 / 10).setScale(2);
-            var valor_freteKabum = new BigDecimal(produto.getPeso() * 0.2 / 10).setScale(2);
+            var valor_freteNinja = BigDecimal.valueOf(produto.getPeso() * 0.3 / 10);
+            var valor_freteKabum = BigDecimal.valueOf(produto.getPeso() * 0.2 / 10);
 
             FreteDTO freteDTO1 = new FreteDTO("Entrega Ninja", valor_freteNinja, 6);
             FreteDTO freteDTO2 = new FreteDTO("Entrega KaBuM", valor_freteKabum, 4);
