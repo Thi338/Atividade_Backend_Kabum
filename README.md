@@ -14,7 +14,7 @@ um método main. Caso queira executar pelo terminal, vá até o diretório princ
 O banco de dados utilizado neste projeto foi o H2, 
 um banco de dados em memória do Java. Para ver a listagem
 das opções de frete, rode os scripts SQL que estão no arquivo
-import.sql (INSERT INTO) na pasta resources. Os scripts devem ser executados no
+scripts.sql (INSERT INTO) na pasta resources. Os scripts devem ser executados no
 console do H2, e ele deve ser acesso neste link: http://localhost:8080/h2-console.
 O arquivo import.sql contém também o script da tabela opcoes_frete, mas não é
 necessário executá-lo no banco. O Hibernate irá mapear a classe OpcoesFrete e criar
